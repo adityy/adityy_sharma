@@ -37,7 +37,7 @@ def main() {
 				sh """
 				echo "Uploading the repository content to the s3 bucket configured for static website hosting"
 			    aws s3 cp index.html s3://aditi-test-bucket-website
-				echo " The website is accesible at http://aditi-test-bucket.s3-website.eu-west-2.amazonaws.com/"
+				echo " The website is accesible at http://aditi-test-bucket-website.s3-website.us-east-2.amazonaws.com"
 				"""
 		}
 	}
