@@ -18,10 +18,13 @@ def main() {
 
                 
                 echo("Options ::")
-                echo("Branch for code checkout : $env.BRANCH_NAME")
-
+                echo("Branch for code checkout : {params.BRANCH_NAME})
+				
+				// Clean up workspace area
+				sh """ rm -rf 
+				"""
 				echo("Checking out the code")
-				gitCheckout("https://github.com/adityy/adityy_sharma.git", env.BRANCH_NAME)
+				gitCheckout("https://github.com/adityy/adityy_sharma.git", 'master')
                 
                 // Check if version already exisits
 				}
@@ -37,7 +40,7 @@ def main() {
 				sh """
 				echo "Uploading the repository content to the s3 bucket configured for static website hosting"
 			    aws s3 cp index.html s3://aditi-test-bucket-website
-				echo " The website is accesible at http://test-aditi-bucket.s3-website.eu-west-2.amazonaws.com/"
+				echo " The website is accesible at http://aditi-test-bucket.s3-website.eu-west-2.amazonaws.com/"
 				"""
 		}
 	}
@@ -62,7 +65,7 @@ def gitCheckout(def gitURL, def gitBranch){
         submoduleCfg: [],
         userRemoteConfigs: [
             [
-                credentialsId: 'adityy_github',
+                credentialsId: 'adityy',
                 url: "${gitURL}"
             ]
         ]
