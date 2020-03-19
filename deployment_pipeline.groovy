@@ -18,13 +18,10 @@ def main() {
 
                 
                 echo("Options ::")
-                echo("Branch for code checkout : params.BRANCH_NAME")
-				
-				// Clean up workspace area
-				sh """ rm -rf 
-				"""
+                echo("Branch for code checkout : $env.BRANCH_NAME")
+
 				echo("Checking out the code")
-				gitCheckout("https://github.com/adityy/adityy_sharma.git", 'master')
+				gitCheckout("https://github.com/adityy/adityy_sharma.git", env.BRANCH_NAME)
                 
                 // Check if version already exisits
 				}
