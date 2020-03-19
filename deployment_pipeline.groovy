@@ -18,7 +18,7 @@ def main() {
 
                 
                 echo("Options ::")
-                echo("Branch for code checkout : ${params.BRANCH_NAME}")
+                echo("Branch for code checkout : {params.BRANCH_NAME})
 				
 				// Clean up workspace area
 				sh """ rm -rf 
@@ -31,6 +31,7 @@ def main() {
 			stage('Run tests') {
 		        	sh """
 				echo "Stage test"
+				chmod 755 testscript1.sh
 				./testscript1.sh
 				"""
 			}	
@@ -64,7 +65,7 @@ def gitCheckout(def gitURL, def gitBranch){
         submoduleCfg: [],
         userRemoteConfigs: [
             [
-                credentialsId: 'github-user',
+                credentialsId: 'adityy',
                 url: "${gitURL}"
             ]
         ]
