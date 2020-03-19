@@ -24,19 +24,21 @@ def main() {
 				sh """ rm -rf 
 				"""
 				echo("Checking out the code")
-				gitCheckout("https://github.com/adityy/adityy_sharma.git", ${params.BRANCH_NAME})
+				gitCheckout("https://github.com/adityy/adityy_sharma.git", 'master')
                 
                 // Check if version already exisits
 				}
 			stage('Run tests') {
-			//	sh " npm install"
-			//	sh " npm test"
+		        	sh """
+				echo "Stage test"
+				./testscript1.sh
 			}	
 			stage('Deployment') {
 				echo ("Deploying the content")
 				sh """
 				echo "Uploading the repository content to the s3 bucket configured for static website hosting"
-				aws s3 sync . s3://my-bucket-name
+			    aws s3 cp index.html s3://aditi-test-bucket-website
+				echo " The website is accesible at http://test-aditi-bucket.s3-website.eu-west-2.amazonaws.com/"
 				"""
 		}
 	}
