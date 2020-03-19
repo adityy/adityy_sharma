@@ -65,7 +65,7 @@ def gitCheckout(def gitURL, def gitBranch){
         submoduleCfg: [],
         userRemoteConfigs: [
             [
-                credentialsId: 'adityy',
+                credentialsId: 'adityy_github',
                 url: "${gitURL}"
             ]
         ]
