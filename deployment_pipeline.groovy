@@ -32,6 +32,7 @@ def main() {
 		        	sh """
 				echo "Stage test"
 				./testscript1.sh
+				"""
 			}	
 			stage('Deployment') {
 				echo ("Deploying the content")
