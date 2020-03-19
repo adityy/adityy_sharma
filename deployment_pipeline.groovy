@@ -18,7 +18,7 @@ def main() {
 
                 
                 echo("Options ::")
-                echo("Branch for code checkout : params.BRANCH_NAME)
+                echo("Branch for code checkout : params.BRANCH_NAME")
 				
 				// Clean up workspace area
 				sh """ rm -rf 
