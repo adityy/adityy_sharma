@@ -29,8 +29,8 @@ def main() {
                 // Check if version already exisits
 				}
 			stage('Run tests') {
-				sh " npm install"
-				sh " npm test"
+			//	sh " npm install"
+			//	sh " npm test"
 			}	
 			stage('Deployment') {
 				echo ("Deploying the content")
@@ -39,6 +39,7 @@ def main() {
 				aws s3 sync . s3://my-bucket-name
 				"""
 		}
+	}
 		
 	} catch (Exception ex) {
 		echo("an exception while execution", ex)
